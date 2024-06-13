@@ -1,4 +1,5 @@
-﻿using RoR2;
+﻿using Facepunch.Steamworks;
+using RoR2;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,7 +35,10 @@ namespace TrashtalkingAI
             var finalString = "<color=#FFFF55>" + bestLocalizedBodyName + " #" + body.GetComponent<TrashtalkingController>().randomAssignedID + " " + action + " the game</color>";
 
             yield return new WaitForSeconds(secondDelay);
-            Chat.AddMessage(finalString);
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+            {
+                baseToken = finalString
+            });
             Util.PlaySound("Play_UI_chatMessage", RoR2Application.instance.gameObject);
         }
 
@@ -96,7 +100,10 @@ namespace TrashtalkingAI
         public static IEnumerator SendPhrase(string finalString, CharacterBody body)
         {
             yield return new WaitForSeconds(0.5f);
-            Chat.AddMessage(finalString);
+            Chat.SendBroadcastChat(new Chat.SimpleChatMessage
+            {
+                baseToken = finalString
+            });
             Util.PlaySound("Play_UI_chatMessage", RoR2Application.instance.gameObject);
         }
     }

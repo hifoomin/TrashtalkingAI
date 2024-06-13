@@ -14,10 +14,10 @@ namespace TrashtalkingAI
             On.RoR2.SetStateOnHurt.SetStun += SetStateOnHurt_SetStun;
             On.RoR2.SetStateOnHurt.SetFrozen += SetStateOnHurt_SetFrozen;
             On.RoR2.SetStateOnHurt.SetShock += SetStateOnHurt_SetShock;
-            RoR2.Stage.onServerStageBegin += Stage_onServerStageBegin;
+            Stage.onStageStartGlobal += Stage_onStageStartGlobal;
         }
 
-        private static void Stage_onServerStageBegin(Stage stage)
+        private static void Stage_onStageStartGlobal(Stage stage)
         {
             if (stage.GetComponent<TrashtalkingController>() == null)
             {
